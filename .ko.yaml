@@ -1,0 +1,11 @@
+defaultBaseImage: "gcr.io/distroless/static:nonroot"
+builds:
+- id: ryuk
+  dir: .
+  main: .
+  flags:
+  - -v
+  - netgo
+  ldflags:
+  - -s -w
+  - -extldflags "-static"

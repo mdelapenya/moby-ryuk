@@ -8,6 +8,11 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      KO_DOCKER_REPO: "docker.io/testcontainers/ryuk"
+      KO_DEFAULTBASEIMAGE: "gcr.io/distroless/static:nonroot"
+      KO_DEFAULTBASEIMAGE_WIN: "mcr.microsoft.com/windows/nanoserver:ltsc2022"
+
     steps:
     - uses: actions/checkout@v3
     - uses: actions/setup-go@v3
@@ -18,23 +23,10 @@ jobs:
     - name: Verify project
       run: make verify
 
-    - name: Set up QEMU
-      uses: docker/setup-qemu-action@v2
-    - name: Set up Docker Buildx
-      id: buildx
-      uses: docker/setup-buildx-action@v2
+    - uses: imjasonh/setup-ko@v0.6
 
-    - name: Docker info
-      run: docker info
-    - name: Buildx inspect
-      run: docker buildx inspect
+    - name: "Set Docker images create time"
+      run: echo "SOURCE_DATE_EPOCH=$(date +%s)" >> $GITHUB_ENV
 
-    - name: Build image
-      uses: docker/build-push-action@v3
-      with:
-        context: .
-        file: ./Dockerfile
-        platforms: linux/amd64,linux/arm/v7,linux/arm64,linux/ppc64le,linux/s390x
-        push: false
-        # Use a 'temp' tag, that won't be pushed, for non-release builds
-        tags: testcontainers/ryuk:${{ github.event.release.tag_name || 'temp' }}
+    - name: "Cross-Build images"
+      run: ko build --platform=linux/amd64,linux/arm64

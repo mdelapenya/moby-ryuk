@@ -10,7 +10,7 @@ on:
 
 env:
   DOCKER_CLI_EXPERIMENTAL: "enabled"
-  GO_VERSION: "1.18"
+  GO_VERSION: "1.18.x"
 
 permissions:
   contents: write

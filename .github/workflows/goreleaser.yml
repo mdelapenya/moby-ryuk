@@ -5,6 +5,8 @@ on:
   push:
     tags:
       - '*'
+    branches:
+      - 'mdelapenya-namespace'
 
 env:
   DOCKER_CLI_EXPERIMENTAL: "enabled"

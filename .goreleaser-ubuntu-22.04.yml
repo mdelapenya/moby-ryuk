@@ -32,7 +32,7 @@ builds:
   - s390x
   mod_timestamp: "{{ .CommitTimestamp }}"
 dockers:
-- image_templates: ["docker.io/testcontainers/{{ .ProjectName }}:{{ .Version }}-linux-arm64"]
+- image_templates: ["docker.io/mdelapenya/{{ .ProjectName }}:{{ .Version }}-linux-arm64"]
   goarch: arm64
   dockerfile: Dockerfile
   use: buildx
@@ -40,14 +40,14 @@ dockers:
   - --platform=linux/arm64
   - --label=org.opencontainers.image.title={{ .ProjectName }}
   - --label=org.opencontainers.image.description={{ .ProjectName }}
-  - --label=org.opencontainers.image.url=https://github.com/testcontainers/{{ .ProjectName }}
-  - --label=org.opencontainers.image.source=https://github.com/testcontainers/{{ .ProjectName }}
+  - --label=org.opencontainers.image.url=https://github.com/mdelapenya/{{ .ProjectName }}
+  - --label=org.opencontainers.image.source=https://github.com/mdelapenya/{{ .ProjectName }}
   - --label=org.opencontainers.image.version={{ .Version }}
   - --label=org.opencontainers.image.created={{ .Env.CURRENT_TIMESTAMP }}
   - --label=org.opencontainers.image.revision={{ .FullCommit }}
   - --label=org.opencontainers.image.licenses=MIT
 
-- image_templates: ["docker.io/testcontainers/{{ .ProjectName }}:{{ .Version }}-linux-armv7"]
+- image_templates: ["docker.io/mdelapenya/{{ .ProjectName }}:{{ .Version }}-linux-armv7"]
   goarch: arm64
   dockerfile: Dockerfile
   use: buildx
@@ -55,14 +55,14 @@ dockers:
   - --platform=linux/arm/v7
   - --label=org.opencontainers.image.title={{ .ProjectName }}
   - --label=org.opencontainers.image.description={{ .ProjectName }}
-  - --label=org.opencontainers.image.url=https://github.com/testcontainers/{{ .ProjectName }}
-  - --label=org.opencontainers.image.source=https://github.com/testcontainers/{{ .ProjectName }}
+  - --label=org.opencontainers.image.url=https://github.com/mdelapenya/{{ .ProjectName }}
+  - --label=org.opencontainers.image.source=https://github.com/mdelapenya/{{ .ProjectName }}
   - --label=org.opencontainers.image.version={{ .Version }}
   - --label=org.opencontainers.image.created={{ .Env.CURRENT_TIMESTAMP }}
   - --label=org.opencontainers.image.revision={{ .FullCommit }}
   - --label=org.opencontainers.image.licenses=MIT
 
-- image_templates: ["docker.io/testcontainers/{{ .ProjectName }}:{{ .Version }}-linux-ppc64le"]
+- image_templates: ["docker.io/mdelapenya/{{ .ProjectName }}:{{ .Version }}-linux-ppc64le"]
   goarch: ppc64le
   dockerfile: Dockerfile
   use: buildx
@@ -70,14 +70,14 @@ dockers:
   - --platform=linux/ppc64le
   - --label=org.opencontainers.image.title={{ .ProjectName }}
   - --label=org.opencontainers.image.description={{ .ProjectName }}
-  - --label=org.opencontainers.image.url=https://github.com/testcontainers/{{ .ProjectName }}
-  - --label=org.opencontainers.image.source=https://github.com/testcontainers/{{ .ProjectName }}
+  - --label=org.opencontainers.image.url=https://github.com/mdelapenya/{{ .ProjectName }}
+  - --label=org.opencontainers.image.source=https://github.com/mdelapenya/{{ .ProjectName }}
   - --label=org.opencontainers.image.version={{ .Version }}
   - --label=org.opencontainers.image.created={{ .Env.CURRENT_TIMESTAMP }}
   - --label=org.opencontainers.image.revision={{ .FullCommit }}
   - --label=org.opencontainers.image.licenses=MIT
 
-- image_templates: ["docker.io/testcontainers/{{ .ProjectName }}:{{ .Version }}-linux-s390x"]
+- image_templates: ["docker.io/mdelapenya/{{ .ProjectName }}:{{ .Version }}-linux-s390x"]
   goarch: s390x
   dockerfile: Dockerfile
   use: buildx
@@ -85,23 +85,23 @@ dockers:
   - --platform=linux/s390x
   - --label=org.opencontainers.image.title={{ .ProjectName }}
   - --label=org.opencontainers.image.description={{ .ProjectName }}
-  - --label=org.opencontainers.image.url=https://github.com/testcontainers/{{ .ProjectName }}
-  - --label=org.opencontainers.image.source=https://github.com/testcontainers/{{ .ProjectName }}
+  - --label=org.opencontainers.image.url=https://github.com/mdelapenya/{{ .ProjectName }}
+  - --label=org.opencontainers.image.source=https://github.com/mdelapenya/{{ .ProjectName }}
   - --label=org.opencontainers.image.version={{ .Version }}
   - --label=org.opencontainers.image.created={{ .Env.CURRENT_TIMESTAMP }}
   - --label=org.opencontainers.image.revision={{ .FullCommit }}
   - --label=org.opencontainers.image.licenses=MIT
 
 docker_manifests:
-- name_template: docker.io/testcontainers/{{ .ProjectName }}:{{ .Version }}
+- name_template: docker.io/mdelapenya/{{ .ProjectName }}:{{ .Version }}
   image_templates:
-  - docker.io/testcontainers/{{ .ProjectName }}:{{ .Version }}-linux-arm64
-  - docker.io/testcontainers/{{ .ProjectName }}:{{ .Version }}-linux-armv7
-  - docker.io/testcontainers/{{ .ProjectName }}:{{ .Version }}-linux-ppc64le
-  - docker.io/testcontainers/{{ .ProjectName }}:{{ .Version }}-linux-s390x
-- name_template: docker.io/testcontainers/{{ .ProjectName }}:latest
+  - docker.io/mdelapenya/{{ .ProjectName }}:{{ .Version }}-linux-arm64
+  - docker.io/mdelapenya/{{ .ProjectName }}:{{ .Version }}-linux-armv7
+  - docker.io/mdelapenya/{{ .ProjectName }}:{{ .Version }}-linux-ppc64le
+  - docker.io/mdelapenya/{{ .ProjectName }}:{{ .Version }}-linux-s390x
+- name_template: docker.io/mdelapenya/{{ .ProjectName }}:latest
   image_templates:
-  - docker.io/testcontainers/{{ .ProjectName }}:{{ .Version }}-linux-arm64
-  - docker.io/testcontainers/{{ .ProjectName }}:{{ .Version }}-linux-armv7
-  - docker.io/testcontainers/{{ .ProjectName }}:{{ .Version }}-linux-ppc64le
-  - docker.io/testcontainers/{{ .ProjectName }}:{{ .Version }}-linux-s390x
+  - docker.io/mdelapenya/{{ .ProjectName }}:{{ .Version }}-linux-arm64
+  - docker.io/mdelapenya/{{ .ProjectName }}:{{ .Version }}-linux-armv7
+  - docker.io/mdelapenya/{{ .ProjectName }}:{{ .Version }}-linux-ppc64le
+  - docker.io/mdelapenya/{{ .ProjectName }}:{{ .Version }}-linux-s390x
